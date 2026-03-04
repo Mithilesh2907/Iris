@@ -3,13 +3,11 @@ import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
 
-# --- UI Header ---
 st.write("""
 # 🌸 Simple Iris Flower Prediction App
 This app predicts the **Iris flower** type based on your input!
 """)
 
-# --- Sidebar for User Input ---
 st.sidebar.header('User Input Parameters')
 
 def user_input_features():
@@ -26,23 +24,19 @@ def user_input_features():
 
 df = user_input_features()
 
-# --- Display User Input ---
 st.subheader('User Input parameters')
 st.write(df)
 
-# --- ML Model Logic ---
 iris = load_iris()
 X = iris.data
 y = iris.target
 
-# Using RandomForest for better stability in a UI
 model = RandomForestClassifier()
 model.fit(X, y)
 
 prediction = model.predict(df)
 prediction_proba = model.predict_proba(df)
 
-# --- Output ---
 st.subheader('Class labels and their corresponding index number')
 st.write(iris.target_names)
 
